@@ -1,0 +1,47 @@
+{
+  "name": "@knkres/quark",
+  "private": false,
+  "version": "0.0.1",
+  "repository": "JordanGilliam/knkres",
+  "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
+  "license": "MIT",
+  "sideEffects": false,
+  "module": "build/esm/index.js",
+  "main": "build/cjs/index.js",
+  "files": [
+    "build",
+    "quark.js",
+    "document.js",
+    "asyncComponent.js",
+    "ensureReady.js",
+    "render.js",
+    "loadInitialProps.js",
+    "serializeData.js",
+    "getAssets.js"
+  ],
+  "scripts": {
+    "prepare": "rm -rf build && npm run build",
+    "build": "echo  noop",
+    "start": "tsc -p tsconfig.build.json --module commonjs --outDir build -w",
+    "test": "razzle test --env=jsdom --no-cache",
+    "test:ci": "CI=true yarn test",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "peerDependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
+    "serialize-javascript": ">=3.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
+    "serialize-javascript": ">=3.0.0",
+    "webpack": "^5.0.0-beta.17"
+  }
+}
