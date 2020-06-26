@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/afternext.git"
+    "url": "git+https://github.com/JordanGilliam/konkres.git"
   },
   "keywords": [
     "babel",

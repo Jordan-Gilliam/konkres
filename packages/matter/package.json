@@ -3,7 +3,7 @@
   "description": "Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
-  "repository": "git@github.com:JordanGilliam/afternext/packages/matter.git",
+  "repository": "git@github.com:JordanGilliam/konkres/packages/matter.git",
   "version": "0.0.1",
   "bin": {
     "matter": "./bin/matter.js"

@@ -11,7 +11,7 @@
   "useWorkspaces": true,
   "npmClient": "yarn",
   "changelog": {
-    "repo": "JordanGilliam/afternext",
+    "repo": "JordanGilliam/konkres",
     "labels": {
       "tag: new feature": ":rocket: New Feature",
       "tag: breaking change": ":boom: Breaking Change",

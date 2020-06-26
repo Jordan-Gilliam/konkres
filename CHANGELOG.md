@@ -1,1 +1,1 @@
-See [Release Notes](https://github.com/JordanGilliam/afternext/releases)
+See [Release Notes](https://github.com/JordanGilliam/konkres/releases)

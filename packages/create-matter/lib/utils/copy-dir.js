@@ -31,7 +31,7 @@ module.exports = function copyDir(opts) {
       .then(function () {
         stopCopySpinner();
         output.success(
-          `Created files for "${output.cmd(projectName)}" afternext app`
+          `Created files for "${output.cmd(projectName)}" konkres app`
         );
         return this;
       })

@@ -4,7 +4,7 @@
   "description": "CLI tool to bootstrap wp5 ssr federated applications with no configuration",
   "main": "index.js",
   "license": "MIT",
-  "repository": "JordanGilliam/afternext/packages/matter",
+  "repository": "JordanGilliam/konkres/packages/matter",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "engines": {
     "node": ">=12"

@@ -3,7 +3,7 @@
   "description": "Utilities and helpers that matter",
   "license": "MIT",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
-  "repository": "git@github.com:JordanGilliam/afternext/packages/alchemy-kit.git",
+  "repository": "git@github.com:JordanGilliam/konkres/packages/alchemy-kit.git",
   "version": "0.0.1",
   "files": [
     "FriendlyErrorsPlugin.js",
