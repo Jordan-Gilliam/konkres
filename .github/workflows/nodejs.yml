@@ -1,0 +1,56 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        webpack: [webpack@latest, webpack@beta]
+
+        exclude:
+          - node-version: 8.x
+            os: ubuntu-latest
+            webpack: webpack@beta
+          - node-version: 8.x
+            os: macOS-latest
+            webpack: webpack@beta
+          - node-version: 8.x
+            os: windows-latest
+            webpack: webpack@beta
+
+    name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }} using ${{ matrix.webpack }}
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install elm globally
+      run: yarn global add elm
+
+    - name: Switch webpack package
+      if: matrix.webpack == 'webpack@beta' && matrix.os == 'windows-latest'
+      run: |
+        del packages/matter/package.json
+        move packages/matter/package.json.webpack5 packages/matter/package.json
+
+    - name: Switch webpack package
+      if: matrix.webpack == 'webpack@beta' && matrix.os != 'windows-latest'
+      run: mv packages/matter/package.json.webpack5 packages/matter/package.json
+
+    - name: Install and bootstrap packages using yarn
+      run: yarn install --frozen-lockfile --ignore-engines --network-timeout 30000
+
+    - name: Run tests
+      run: yarn e2e --runInBand --coverage
+      env:
+        CI: true

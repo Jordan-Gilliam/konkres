@@ -1,0 +1,82 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  steps:
+    - checkout
+    - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+    - run:
+        name: Install elm globally
+        command: yarn global add elm
+
+    - run:
+        name: Install and bootstrap packages
+        command: yarn install --frozen-lockfile --ignore-engines
+
+    - run:
+        name: Run tests
+        command: yarn e2e --runInBand --coverage
+
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "yarn.lock" }}
+
+    - persist_to_workspace:
+        root: ~/repo
+        paths: .
+
+defaultsWebpack5: &defaultsWebpack5
+  working_directory: ~/repo
+  steps:
+    - checkout
+    - restore_cache:
+        keys:
+          - v1-dependencies-webpack5-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-webpack5-
+    - run:
+        name: Install elm globally
+        command: yarn global add elm
+
+    - run:
+        name: Switch webpack package
+        command: mv packages/razzle/package.json.webpack5 packages/razzle/package.json
+
+    - run:
+        name: Install and bootstrap packages
+        command: yarn install --frozen-lockfile --ignore-engines
+
+    - run:
+        name: Run tests
+        command: yarn e2e --runInBand --coverage
+
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-webpack5-{{ checksum "yarn.lock" }}
+
+    - persist_to_workspace:
+        root: ~/repo
+        paths: .
+
+jobs:
+  test-node12:
+    <<: *defaults
+    docker:
+      - image: circleci/node:12
+  test-node14:
+    <<: *defaults
+    docker:
+      - image: circleci/node:14
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test-node12
+      - test-node14
