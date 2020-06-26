@@ -3,6 +3,13 @@
   "private": true,
   "version": "independent",
   "devDependencies": {
+    "eslint": "^7.3.1",
+    "jest": "^26.1.0",
+    "lerna-changelog": "^1.0.1",
+    "ps-tree": "1.2.0",
+    "semver": "7.3.2",
+    "shelljs": "^0.8.4",
+    "serve": "^11.3.2",
     "got": "^11.3.0",
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
@@ -15,10 +22,13 @@
     "packages/*"
   ],
   "scripts": {
+    "e2e": "jest --config ./test/jest.config.json --verbose --no-cache ",
     "test:ci": "lerna run test:ci --stream",
+    "clean": "lerna clean --yes && node ./scripts/clean.js",
     "format": "prettier --trailing-comma es5 --single-quote --semi --write \"**/*.+(js|jsx|mjs|json|yml|yaml|css|less|scss|ts|tsx|md|mdx)\"",
     "publish-canary": "lerna version prerelease --preid canary --force-publish && release --pre",
-    "publish-stable": "lerna version --force-publish && release && node ./scripts/release-notes.js"
+    "publish-stable": "lerna version --force-publish && release && node ./scripts/release-notes.js",
+    "changelog": "lerna-changelog"
   },
   "husky": {
     "hooks": {
@@ -35,5 +45,21 @@
     "trailingComma": "es5",
     "singleQuote": true,
     "semi": true
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/coverage/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/examples/"
+    ],
+    "collectCoverageFrom": [
+      "**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/packages/*/node_modules/",
+      "<rootDir>/examples/",
+      "<rootDir>/coverage/"
+    ]
   }
 }

@@ -1,0 +1,232 @@
+#! /usr/bin/env node
+'use strict';
+/* 
+    ORIGINALLY CREATED BY JARED PALMER
+      - forked copy from @after.js + razzle
+      - re-purposed with wp5 module-federation as a first class citizen
+*/
+
+// Do this as the first thing so that any code reading it knows the right env.
+process.env.NODE_ENV = 'production';
+
+// Makes the script crash on unhandled rejections instead of silently
+// ignoring them. In the future, promise rejections that are not handled will
+// terminate the Node.js process with a non-zero exit code.
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
+
+// Makes the script crash on unhandled rejections instead of silently
+// ignoring them. In the future, promise rejections that are not handled will
+// terminate the Node.js process with a non-zero exit code.
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
+
+// Ensure environment variables are read.
+require('../config/env');
+
+const webpack = require('webpack');
+const mri = require('mri');
+const fs = require('fs-extra');
+const chalk = require('chalk');
+const paths = require('../config/paths');
+const createConfig = require('../config/createConfig');
+const printErrors = require('alchemy-kit/printErrors');
+const clearConsole = require('react-dev-utils/clearConsole');
+const logger = require('alchemy-kit/logger');
+const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
+const formatWebpackMessages = require('alchemy-kit/formatWebpackMessages');
+const measureFileSizesBeforeBuild =
+  FileSizeReporter.measureFileSizesBeforeBuild;
+const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
+
+const argv = process.argv.slice(2);
+const cliArgs = mri(argv);
+// Set the default build mode to isomorphic
+cliArgs.type = cliArgs.type || 'iso';
+const clientOnly = cliArgs.type === 'spa';
+// Capture the type (isomorphic or single-page) as an environment variable
+process.env.BUILD_TYPE = cliArgs.type;
+
+// First, read the current file sizes in build directory.
+// This lets us display how much they changed later.
+measureFileSizesBeforeBuild(paths.appBuildPublic)
+  .then((previousFileSizes) => {
+    // Remove all content but keep the directory so that
+    // if you're in it, you don't end up in Trash
+    fs.emptyDirSync(paths.appBuild);
+
+    // Merge with the public folder
+    copyPublicFolder();
+
+    // Start the webpack build
+    return build(previousFileSizes);
+  })
+  .then(
+    ({ stats, previousFileSizes, warnings }) => {
+      if (warnings.length) {
+        console.log(chalk.yellow('Compiled with warnings.\n'));
+        console.log(warnings.join('\n\n'));
+        console.log(
+          '\nSearch for the ' +
+            chalk.underline(chalk.yellow('keywords')) +
+            ' to learn more about each warning.'
+        );
+        console.log(
+          'To ignore, add ' +
+            chalk.cyan('// eslint-disable-next-line') +
+            ' to the line before.\n'
+        );
+      } else {
+        console.log(chalk.green('Compiled successfully.\n'));
+      }
+      console.log('File sizes after gzip:\n');
+      printFileSizesAfterBuild(stats, previousFileSizes, paths.appBuild);
+      console.log();
+    },
+    (err) => {
+      console.log(chalk.red('Failed to compile.\n'));
+      console.log(err);
+      console.log(err.message || err);
+      console.log();
+
+      process.exit(1);
+    }
+  );
+
+function build(previousFileSizes) {
+  let matter = {};
+
+  // Check for matter.config.js file
+  if (fs.existsSync(paths.appMatterConfig)) {
+    try {
+      matter = require(paths.appMatterConfig);
+    } catch (e) {
+      clearConsole();
+      logger.error('Invalid matter.config.js file.', e);
+      process.exit(1);
+    }
+  }
+
+  if (matter.clearConsole === false || !!matter.host || !!matter.port) {
+    logger.warn(`Specifying options \`port\`, \`host\`, and \`clearConsole\` in matter.config.js has been deprecated.
+Please use a .env file instead.
+
+${matter.host !== 'localhost' && `HOST=${matter.host}`}
+${matter.port !== '3000' && `PORT=${matter.port}`}
+`);
+  }
+
+  let serverConfig;
+
+  // Create our production webpack configurations and pass in matter options.
+  let clientConfig = createConfig('web', 'prod', matter, webpack, clientOnly);
+
+  if (!clientOnly) {
+    serverConfig = createConfig('node', 'prod', matter, webpack);
+  }
+
+  process.noDeprecation = true; // turns off that loadQuery clutter.
+
+  console.log('Creating an optimized production build...');
+  console.log('Compiling client...');
+  // First compile the client. We need it to properly output assets.json (asset
+  // manifest) and chunks.json (chunk manifest) files with the correct hashes on file names BEFORE we can start
+  // the server compiler.
+  return new Promise((resolve, reject) => {
+    compile(clientConfig, (err, clientStats) => {
+      if (err) {
+        return reject(err);
+      }
+      const clientMessages = formatWebpackMessages(
+        clientStats.toJson({}, true)
+      );
+      if (clientMessages.errors.length) {
+        return reject(new Error(clientMessages.errors.join('\n\n')));
+      }
+      if (
+        process.env.CI &&
+        (typeof process.env.CI !== 'string' ||
+          process.env.CI.toLowerCase() !== 'false') &&
+        clientMessages.warnings.length
+      ) {
+        console.log(
+          chalk.yellow(
+            '\nTreating warnings as errors because process.env.CI = true.\n' +
+              'Most CI servers set it automatically.\n'
+          )
+        );
+        return reject(new Error(clientMessages.warnings.join('\n\n')));
+      }
+
+      console.log(chalk.green('Compiled client successfully.'));
+      if (clientOnly) {
+        return resolve({
+          stats: clientStats,
+          previousFileSizes,
+          warnings: clientMessages.warnings,
+        });
+      } else {
+        console.log('Compiling server...');
+        compile(serverConfig, (err, serverStats) => {
+          if (err) {
+            return reject(err);
+          }
+          const serverMessages = formatWebpackMessages(
+            serverStats.toJson({}, true)
+          );
+          if (serverMessages.errors.length) {
+            return reject(new Error(serverMessages.errors.join('\n\n')));
+          }
+          if (
+            process.env.CI &&
+            (typeof process.env.CI !== 'string' ||
+              process.env.CI.toLowerCase() !== 'false') &&
+            serverMessages.warnings.length
+          ) {
+            console.log(
+              chalk.yellow(
+                '\nTreating warnings as errors because process.env.CI = true.\n' +
+                  'Most CI servers set it automatically.\n'
+              )
+            );
+            return reject(new Error(serverMessages.warnings.join('\n\n')));
+          }
+          console.log(chalk.green('Compiled server successfully.'));
+          return resolve({
+            stats: clientStats,
+            previousFileSizes,
+            warnings: Object.assign(
+              {},
+              clientMessages.warnings,
+              serverMessages.warnings
+            ),
+          });
+        });
+      }
+    });
+  });
+}
+
+// Helper function to copy public directory to build/public
+function copyPublicFolder() {
+  fs.copySync(paths.appPublic, paths.appBuildPublic, {
+    dereference: true,
+    filter: (file) => file !== paths.appHtml,
+  });
+}
+
+// Wrap webpack compile in a try catch.
+function compile(config, cb) {
+  let compiler;
+  try {
+    compiler = webpack(config);
+  } catch (e) {
+    printErrors('Failed to compile.', [e]);
+    process.exit(1);
+  }
+  compiler.run((err, stats) => {
+    cb(err, stats);
+  });
+}

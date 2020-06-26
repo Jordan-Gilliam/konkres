@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "matter build"
+  },
+  "name": "build-default",
+  "license": "MIT"
+}

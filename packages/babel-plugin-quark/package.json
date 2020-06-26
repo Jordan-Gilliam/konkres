@@ -1,0 +1,29 @@
+{
+  "name": "babel-plugin-quark",
+  "private": false,
+  "version": "0.0.1",
+  "description": "Babel plugin for quark.js",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanGilliam/afternext.git"
+  },
+  "keywords": [
+    "babel",
+    "plugin",
+    "quark"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test:ci": "echo \"no test specified for babel-plugin-quark\" && exit 0",
+    "clean": "rm -rf lib",
+    "build": "babel src -d lib",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.10.3"
+  }
+}

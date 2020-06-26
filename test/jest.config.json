@@ -1,0 +1,5 @@
+{
+  "roots": ["<rootDir>/tests"],
+  "collectCoverageFrom": ["**/*.js"],
+  "testMatch": ["<rootDir>/tests/**/*(*.)@(spec|test).(ts|js)?(x)"]
+}

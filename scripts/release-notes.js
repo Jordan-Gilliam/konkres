@@ -4,7 +4,7 @@ const got = require('got');
 
 async function main() {
   const res = await got(
-    'https://api.github.com/repos/Jordan-Gilliam/knkres/releases',
+    'https://api.github.com/repos/Jordan-Gilliam/afternext/releases',
     {
       responseType: 'json',
     }
@@ -108,7 +108,7 @@ async function main() {
 
   // Add compare link
   finalMessage.push(
-    `https://github.com/Jordan-Gilliam/knkres/compare/${firstVersion}...${lastVersion}`
+    `https://github.com/Jordan-Gilliam/afternext/compare/${firstVersion}...${lastVersion}`
   );
 
   return {

@@ -1,13 +1,14 @@
 {
-  "name": "@knkres/quark",
+  "name": "quark",
   "private": false,
   "version": "0.0.1",
-  "repository": "JordanGilliam/knkres",
+  "repository": "JordanGilliam/afternext",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
   "module": "build/esm/index.js",
   "main": "build/cjs/index.js",
+  "types": "build/cjs/index.d.ts",
   "files": [
     "build",
     "quark.js",
@@ -20,12 +21,36 @@
     "getAssets.js"
   ],
   "scripts": {
-    "prepare": "rm -rf build && npm run build",
-    "build": "echo  noop",
+    "prepare": "rm -rf build && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.build.json --module es2015 --outDir build/esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir build/cjs",
     "start": "tsc -p tsconfig.build.json --module commonjs --outDir build -w",
-    "test": "razzle test --env=jsdom --no-cache",
+    "test": "matter test --env=jsdom --no-cache",
     "test:ci": "CI=true yarn test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "<rootDir>/src/test/**/*test.ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "collectCoverageFrom": [
+      "**/*.js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    }
   },
   "peerDependencies": {
     "express": "^4.17.1",
@@ -33,15 +58,35 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "serialize-javascript": ">=3.0.0"
+    "serialize-javascript": ">=4.0.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.0.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/serialize-javascript": "^1.5.0",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-react": "^7.20.0",
     "express": "^4.17.1",
+    "jest": "^26.1.0",
+    "matter": "^0.0.1",
+    "alchemy-kit": "^0.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "serialize-javascript": ">=3.0.0",
-    "webpack": "^5.0.0-beta.17"
+    "serialize-javascript": ">=4.0.0",
+    "webpack": "^5.0.0-beta.18",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "babel-plugin-quark": "^0.0.1"
   }
 }

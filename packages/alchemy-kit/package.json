@@ -1,0 +1,25 @@
+{
+  "name": "alchemy-kit",
+  "description": "Utilities and helpers that matter",
+  "license": "MIT",
+  "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
+  "repository": "git@github.com:JordanGilliam/afternext/packages/alchemy-kit.git",
+  "version": "0.0.1",
+  "files": [
+    "FriendlyErrorsPlugin.js",
+    "WebpackConfigHelpers.js",
+    "logger.js",
+    "makeLoaderFinder.js",
+    "prettyNodeErrors.js",
+    "printErrors.js",
+    "setPorts.js",
+    "webpackHotDevClient.js"
+  ],
+  "dependencies": {
+    "@babel/code-frame": "^7.10.3",
+    "chalk": "4.1.0",
+    "jest-message-util": "^26.1.0",
+    "react-dev-utils": "^10.2.1",
+    "strip-ansi": "6.0.0"
+  }
+}

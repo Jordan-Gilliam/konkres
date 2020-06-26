@@ -1,0 +1,11 @@
+{
+  "name": "my-concrescence",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "matter start",
+    "build": "matter build",
+    "test": "matter test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  }
+}
