@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "repository": "git@github.com:JordanGilliam/konkres/packages/alchemy-kit.git",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "files": [
     "FriendlyErrorsPlugin.js",
     "WebpackConfigHelpers.js",

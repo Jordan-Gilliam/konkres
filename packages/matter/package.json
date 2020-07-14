@@ -3,7 +3,7 @@
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "description": "Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JordanGilliam/konkres.git"
@@ -26,7 +26,9 @@
   ],
   "dependencies": {
     "@babel/core": "^7.10.3",
+    "@fivethreeo/start-server-webpack-plugin": "^3.0.0-rc4",
     "@pmmmwh/react-refresh-webpack-plugin": "0.3.3",
+    "alchemy-kit": "^0.0.1",
     "assets-webpack-plugin": "^5.0.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.1.0",
@@ -49,10 +51,8 @@
     "react-dev-utils": "^10.2.1",
     "react-error-overlay": "^6.0.7",
     "react-refresh": "^0.8.3",
-    "alchemy-kit": "^0.0.1",
     "sade": "^1.7.3",
     "source-map-support": "^0.5.19",
-    "@fivethreeo/start-server-webpack-plugin": "^3.0.0-rc4",
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^3.0.6",
     "url-loader": "^4.1.0",
