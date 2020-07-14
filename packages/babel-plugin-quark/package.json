@@ -7,10 +7,10 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/babel-plugin-quark#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git"
+    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "directory": "packages/babel-plugin-quark"
   },
   "publishConfig": {
-    "url": "https://www.npmjs.com/org/konkres",
     "access": "public"
   },
   "bugs": {

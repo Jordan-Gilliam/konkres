@@ -7,10 +7,10 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/matter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git"
+    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "directory": "packages/matter"
   },
   "publishConfig": {
-    "url": "https://www.npmjs.com/org/konkres",
     "access": "public"
   },
   "bugs": {

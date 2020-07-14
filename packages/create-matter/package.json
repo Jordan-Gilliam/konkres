@@ -8,10 +8,10 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/create-matter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git"
+    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "directory": "packages/create-matter"
   },
   "publishConfig": {
-    "url": "https://www.npmjs.com/org/konkres",
     "access": "public"
   },
   "bugs": {
