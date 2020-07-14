@@ -3,14 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "packages": [
-    "packages/@konkres/matter",
-    "packages/@konkres/create-matter",
-    "packages/@konkres/alchemy-kit",
-    "packages/@konkres/babel-preset-matter",
-    "packages/@konkres/create-quark",
-    "packages/@konkres/quark"
-  ],
+  "packages": ["packages/*"],
   "useWorkspaces": true,
   "npmClient": "yarn",
   "changelog": {

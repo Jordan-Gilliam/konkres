@@ -21,6 +21,7 @@
     "packages/*"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
     "e2e": "jest --config ./test/jest.config.json --verbose --no-cache ",
     "test:ci": "lerna run test:ci --stream",
     "clean": "lerna clean --yes && node ./scripts/clean.js",
