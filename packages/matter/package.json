@@ -3,7 +3,7 @@
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "description": "Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.2-canary.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JordanGilliam/konkres.git"
