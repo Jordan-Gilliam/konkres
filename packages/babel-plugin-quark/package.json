@@ -1,7 +1,7 @@
 {
   "name": "@konkres/babel-plugin-quark",
-  "private": false,
   "version": "0.0.3-canary.1",
+  "private": false,
   "description": "Babel plugin for quark.js",
   "main": "lib/index.js",
   "homepage": "git@github.com:JordanGilliam/konkres/packages/babel-plugin-quark#readme",
@@ -27,11 +27,5 @@
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
     "prepublishOnly": "npm run clean && npm run build"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.10.3"
   }
 }

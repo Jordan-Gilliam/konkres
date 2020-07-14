@@ -1,5 +1,6 @@
 {
   "name": "@konkres/alchemy-kit",
+  "version": "0.0.3-canary.1",
   "description": "Utilities and helpers that matter",
   "license": "MIT",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
@@ -12,7 +13,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.3-canary.1",
   "files": [
     "FriendlyErrorsPlugin.js",
     "WebpackConfigHelpers.js",

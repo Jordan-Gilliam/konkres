@@ -10,20 +10,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
         os: [ubuntu-latest, windows-latest, macOS-latest]
         webpack: [webpack@latest, webpack@beta]
-
-        exclude:
-          - node-version: 8.x
-            os: ubuntu-latest
-            webpack: webpack@beta
-          - node-version: 8.x
-            os: macOS-latest
-            webpack: webpack@beta
-          - node-version: 8.x
-            os: windows-latest
-            webpack: webpack@beta
 
     name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }} using ${{ matrix.webpack }}
 

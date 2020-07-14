@@ -35,10 +35,6 @@ jobs:
     <<: *defaults
     docker:
       - image: circleci/node:12
-  test-node14:
-    <<: *defaults
-    docker:
-      - image: circleci/node:14
 
 workflows:
   version: 2
