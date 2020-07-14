@@ -1,4 +1,4 @@
-# babel-plugin-after
+# @konkres/babel-plugin-after
 
 Babel plugin to add additional chunk info to asyncComponent() in Quarkjs.
 

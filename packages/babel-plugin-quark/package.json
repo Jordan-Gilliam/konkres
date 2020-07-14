@@ -10,6 +10,7 @@
     "url": "git+https://github.com/JordanGilliam/konkres.git"
   },
   "publishConfig": {
+    "url": "https://www.npmjs.com/org/konkres",
     "access": "public"
   },
   "bugs": {

@@ -1,4 +1,4 @@
-# create-matter
+# @konkres/create-matter
 
 Create Isomorphic federated React config.
 
