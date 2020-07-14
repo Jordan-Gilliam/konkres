@@ -43,14 +43,10 @@ jobs:
         del packages/matter/package.json
         move packages/matter/package.json.webpack5 packages/matter/package.json
 
-    - name: Switch webpack package
-      if: matrix.webpack == 'webpack@beta' && matrix.os != 'windows-latest'
-      run: mv packages/matter/package.json.webpack5 packages/matter/package.json
-
     - name: Install and bootstrap packages using yarn
       run: yarn install --frozen-lockfile --ignore-engines --network-timeout 30000
 
-    - name: Run tests
-      run: yarn e2e --runInBand --coverage
-      env:
-        CI: true
+    # - name: Run tests
+    #   run: yarn e2e --runInBand --coverage
+    #   env:
+    #     CI: true

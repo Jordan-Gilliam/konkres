@@ -17,48 +17,14 @@ defaults: &defaults
         name: Install and bootstrap packages
         command: yarn install --frozen-lockfile --ignore-engines
 
-    - run:
-        name: Run tests
-        command: yarn e2e --runInBand --coverage
+    # - run:
+    #     name: Run tests
+    #     command: yarn e2e --runInBand --coverage
 
     - save_cache:
         paths:
           - node_modules
         key: v1-dependencies-{{ checksum "yarn.lock" }}
-
-    - persist_to_workspace:
-        root: ~/repo
-        paths: .
-
-defaultsWebpack5: &defaultsWebpack5
-  working_directory: ~/repo
-  steps:
-    - checkout
-    - restore_cache:
-        keys:
-          - v1-dependencies-webpack5-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-webpack5-
-    - run:
-        name: Install elm globally
-        command: yarn global add elm
-
-    - run:
-        name: Switch webpack package
-        command: mv packages/razzle/package.json.webpack5 packages/razzle/package.json
-
-    - run:
-        name: Install and bootstrap packages
-        command: yarn install --frozen-lockfile --ignore-engines
-
-    - run:
-        name: Run tests
-        command: yarn e2e --runInBand --coverage
-
-    - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-webpack5-{{ checksum "yarn.lock" }}
 
     - persist_to_workspace:
         root: ~/repo

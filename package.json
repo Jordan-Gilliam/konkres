@@ -26,7 +26,7 @@
     "clean": "lerna clean --yes && node ./scripts/clean.js",
     "format": "prettier --trailing-comma es5 --single-quote --semi --write \"**/*.+(js|jsx|mjs|json|yml|yaml|css|less|scss|ts|tsx|md|mdx)\"",
     "publish-canary": "lerna version prerelease --preid canary publish && release --pre",
-    "publish-stable": "lerna version --force-publish && release && node ./scripts/release-notes.js",
+    "publish-stable": "lerna version publish && release && node ./scripts/release-notes.js",
     "changelog": "lerna-changelog"
   },
   "husky": {
