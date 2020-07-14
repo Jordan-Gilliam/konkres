@@ -1,5 +1,6 @@
 {
   "lerna": "3.22.1",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "packages": [
     "packages/@konkres/matter",
     "packages/@konkres/create-matter",
