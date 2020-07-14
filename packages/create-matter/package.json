@@ -1,11 +1,20 @@
 {
-  "name": "create-matter",
+  "name": "@konkres/create-matter",
   "version": "0.0.1",
+  "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "description": "CLI tool to bootstrap wp5 ssr federated applications with no configuration",
   "main": "index.js",
   "license": "MIT",
-  "repository": "JordanGilliam/konkres/packages/matter",
-  "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanGilliam/konkres.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/JordanGilliam/konkres/issues"
+  },
   "engines": {
     "node": ">=12"
   },

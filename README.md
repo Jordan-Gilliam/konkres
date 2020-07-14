@@ -40,9 +40,10 @@ Thanks for being you:)
 > MIT
 
 ## Goal
-   - This project is currently an iteration on the progress made by Jared Palmer.
-   - ...todo
-   
+
+- This project is currently an iteration on the progress made by Jared Palmer.
+- ...todo
+
 ## Usage
 
 > TODO
@@ -50,4 +51,3 @@ Thanks for being you:)
 ## API
 
 > TODO
-

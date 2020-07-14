@@ -1,12 +1,12 @@
 {
   "lerna": "3.22.1",
   "packages": [
-    "packages/matter",
-    "packages/create-matter",
-    "packages/alchemy-kit",
-    "packages/babel-preset-matter",
-    "packages/create-quark",
-    "packages/quark"
+    "packages/@konkres/matter",
+    "packages/@konkres/create-matter",
+    "packages/@konkres/alchemy-kit",
+    "packages/@konkres/babel-preset-matter",
+    "packages/@konkres/create-quark",
+    "packages/@konkres/quark"
   ],
   "useWorkspaces": true,
   "npmClient": "yarn",

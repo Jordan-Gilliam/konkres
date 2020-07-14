@@ -1,7 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "version": "independent",
   "devDependencies": {
     "eslint": "^7.3.1",
     "jest": "^26.1.0",

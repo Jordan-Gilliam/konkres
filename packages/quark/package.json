@@ -1,14 +1,23 @@
 {
-  "name": "quark",
+  "name": "@konkres/quark",
   "private": false,
   "version": "0.0.1",
-  "repository": "JordanGilliam/konkres",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
   "module": "build/esm/index.js",
   "main": "build/cjs/index.js",
   "types": "build/cjs/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanGilliam/konkres.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/JordanGilliam/konkres/issues"
+  },
   "files": [
     "build",
     "quark.js",

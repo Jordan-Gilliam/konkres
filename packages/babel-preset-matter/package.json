@@ -1,9 +1,19 @@
 {
-  "name": "babel-preset-matter",
+  "name": "@konkres/babel-preset-matter",
   "version": "0.0.1",
   "description": "Babel presets for Matter",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanGilliam/konkres.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/JordanGilliam/konkres/issues"
+  },
   "files": [
     "index.js"
   ],
