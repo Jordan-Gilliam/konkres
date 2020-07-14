@@ -3,7 +3,7 @@
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "description": "Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
-  "version": "0.0.3-canary.0",
+  "version": "0.0.3-canary.1",
   "homepage": "git@github.com:JordanGilliam/konkres/packages/matter#readme",
   "repository": {
     "type": "git",

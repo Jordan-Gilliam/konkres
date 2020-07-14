@@ -1,6 +1,6 @@
 {
   "name": "@konkres/create-matter",
-  "version": "0.0.3-canary.0",
+  "version": "0.0.3-canary.1",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "description": "CLI tool to bootstrap wp5 ssr federated applications with no configuration",
   "main": "index.js",

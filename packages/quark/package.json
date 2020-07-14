@@ -1,7 +1,7 @@
 {
   "name": "@konkres/quark",
   "private": false,
-  "version": "0.0.3-canary.0",
+  "version": "0.0.3-canary.1",
   "author": "Jordan Gilliam <jordan.dev.00@gmail.com>",
   "license": "MIT",
   "sideEffects": false,

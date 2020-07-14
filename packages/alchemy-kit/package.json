@@ -12,7 +12,7 @@
     "url": "https://www.npmjs.com/org/konkres",
     "access": "public"
   },
-  "version": "0.0.3-canary.0",
+  "version": "0.0.3-canary.1",
   "files": [
     "FriendlyErrorsPlugin.js",
     "WebpackConfigHelpers.js",
