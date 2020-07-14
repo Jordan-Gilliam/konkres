@@ -1,1 +1,1 @@
-See [Release Notes](https://github.com/JordanGilliam/konkres/releases)
+See [Release Notes](https://github.com/Jordan-Gilliam/konkres/releases)

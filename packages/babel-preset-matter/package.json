@@ -7,14 +7,14 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/babel-preset-matter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "url": "git+https://github.com/Jordan-Gilliam/konkres.git",
     "directory": "packages/babel-preset-matter"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/JordanGilliam/konkres/issues"
+    "url": "https://github.com/Jordan-Gilliam/konkres/issues"
   },
   "files": [
     "index.js"

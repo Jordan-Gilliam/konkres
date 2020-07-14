@@ -11,14 +11,14 @@
   "types": "build/cjs/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "url": "git+https://github.com/Jordan-Gilliam/konkres.git",
     "directory": "packages/quark"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/JordanGilliam/konkres/issues"
+    "url": "https://github.com/Jordan-Gilliam/konkres/issues"
   },
   "files": [
     "build",

@@ -7,7 +7,7 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/alchemy-kit#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "url": "git+https://github.com/Jordan-Gilliam/konkres.git",
     "directory": "packages/alchemy-kit"
   },
   "publishConfig": {

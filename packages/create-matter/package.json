@@ -8,14 +8,14 @@
   "homepage": "git@github.com:JordanGilliam/konkres/packages/create-matter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordanGilliam/konkres.git",
+    "url": "git+https://github.com/Jordan-Gilliam/konkres.git",
     "directory": "packages/create-matter"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/JordanGilliam/konkres/issues"
+    "url": "https://github.com/Jordan-Gilliam/konkres/issues"
   },
   "engines": {
     "node": ">=12"
