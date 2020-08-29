@@ -15,9 +15,9 @@ import {
   InitialData,
   TransitionBehavior,
 } from './types';
-import { get404Component, getAllRoutes, isInstantTransition } from './utils';
+import { get404Component, getAllRoutes, isInstantTransition } from './guards';
 
-export interface QuarkpartyProps extends RouteComponentProps<any> {
+export interface CharmProps extends RouteComponentProps<any> {
   history: History;
   location: Location;
   data: ServerAppState;
@@ -26,14 +26,14 @@ export interface QuarkpartyProps extends RouteComponentProps<any> {
   transitionBehavior: TransitionBehavior;
 }
 
-export interface QuarkpartyState {
+export interface CharmState {
   data?: InitialData;
   previousLocation: Location | null;
   currentLocation: Location | null;
   isLoading: boolean;
 }
 
-class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
+class CharmProvider extends React.Component<CharmProps, CharmState> {
   state = {
     data: this.props.data.initialData,
     previousLocation: null,
@@ -41,7 +41,7 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
     isLoading: false,
   };
 
-  prefetcherCache: object = {};
+  preFetcherCache: object = {};
   NotfoundComponent:
     | React.ComponentType<RouteComponentProps<any>>
     | React.ComponentType<any> = get404Component(this.props.routes);
@@ -50,10 +50,7 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
     transitionBehavior: 'blocking' as TransitionBehavior,
   };
 
-  static getDerivedStateFromProps(
-    props: QuarkpartyProps,
-    state: QuarkpartyState
-  ) {
+  static getDerivedStateFromProps(props: CharmProps, state: CharmState) {
     const currentLocation = props.location;
     const previousLocation = state.currentLocation;
 
@@ -69,7 +66,7 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
     return null;
   }
 
-  componentDidUpdate(_prevProps: QuarkpartyProps, prevState: QuarkpartyState) {
+  componentDidUpdate(_prevProps: CharmProps, prevState: CharmState) {
     const navigated = prevState.currentLocation !== this.state.currentLocation;
     if (navigated) {
       const {
@@ -130,13 +127,13 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
     }
   }
 
-  prefetch = (pathname: string) => {
+  preFetch = (pathname: string) => {
     loadInitialProps(this.props.routes, pathname, {
       history: this.props.history,
     })
       .then(({ data }) => {
-        this.prefetcherCache = {
-          ...this.prefetcherCache,
+        this.preFetcherCache = {
+          ...this.preFetcherCache,
           [pathname]: data,
         };
       })
@@ -146,7 +143,7 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
   render() {
     const { previousLocation, data, isLoading } = this.state;
     const { location: currentLocation, transitionBehavior } = this.props;
-    const initialData = this.prefetcherCache[currentLocation.pathname] || data;
+    const initialData = this.preFetcherCache[currentLocation.pathname] || data;
 
     const instantMode = isInstantTransition(transitionBehavior);
 
@@ -172,7 +169,7 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
                 ...initialData,
                 history: props.history,
                 match: props.match,
-                prefetch: this.prefetch,
+                preFetch: this.preFetch,
                 location,
                 isLoading,
               })
@@ -183,4 +180,5 @@ class Quarkparty extends React.Component<QuarkpartyProps, QuarkpartyState> {
     );
   }
 }
-export const Quark = withRouter(Quarkparty);
+
+export const Charm = withRouter(CharmProvider);
