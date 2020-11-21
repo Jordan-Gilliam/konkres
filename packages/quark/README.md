@@ -1,1 +1,0 @@
-# @konkres/quark

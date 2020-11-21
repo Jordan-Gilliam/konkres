@@ -1,17 +1,8 @@
 {
   "compilerOptions": {
-    "allowUnreachableCode": false,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "noImplicitAny": true,
-    "strict": true,
-    "pretty": true,
-    "jsx": "react",
-    "suppressImplicitAnyIndexErrors": true
+    "esModuleInterop": true
   }
 }

@@ -1,38 +1,16 @@
 {
   "name": "root",
   "private": true,
-  "devDependencies": {
-    "husky": "^4.2.5",
-    "lerna": "^3.22.1",
-    "lerna-changelog": "^1.0.1",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
-    "release": "^6.1.0",
-    "semver": "7.3.2"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --use-workspaces",
-    "e2e": "jest --config ./test/jest.config.json --verbose --no-cache ",
-    "test:ci": "lerna run test:ci --stream",
-    "clean": "lerna clean --yes && node ./scripts/clean.js",
-    "format": "prettier --trailing-comma es5 --single-quote --semi --write \"**/*.+(js|jsx|mjs|json|yml|yaml|css|less|scss|ts|tsx|md|mdx)\"",
-    "publish-next": "lerna publish --canary --preid next --npm-tag next --skip-git",
-    "publish-stable": "lerna version publish && release && node ./scripts/release-notes.js",
-    "changelog": "lerna-changelog"
+    "version": "lerna version",
+    "build": "lerna run build",
+    "format": "prettier --write packages/*/src/**/*.ts",
+    "publish": "lerna publish from-package --contents pkg",
+    "nuke": "lerna exec \"rm -f package-lock.json npm-shrinkwrap.json\" && lerna clean --yes && lerna bootstrap && lerna exec --stream -- \"test -f package-lock.json || npm install --package-lock-only\""
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|mdx)": [
-      "prettier --trailing-comma es5 --single-quote --semi --write",
-      "git add"
-    ]
+  "devDependencies": {
+    "lerna": "^3.16.4",
+    "prettier": "^1.18.2"
   },
   "dependencies": {}
 }

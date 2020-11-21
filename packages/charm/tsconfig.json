@@ -1,7 +1,0 @@
-{
-  "extends": "../../tsconfig.packages.json",
-  "compilerOptions": {
-    "lib": ["es2016", "dom"]
-  },
-  "exclude": ["src/test", "build", "node_modules"]
-}
