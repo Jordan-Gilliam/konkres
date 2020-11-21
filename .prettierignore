@@ -1,7 +1,0 @@
-node_modules
-build
-package-lock.json
-yarn.lock
-ISSUE_TEMPLATE.md
-.github
-.circleci

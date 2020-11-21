@@ -1,6 +1,0 @@
-node_modules/
-build
-my-app*
-test/fixtures
-test/tests
-packages/create-matter-app/templates
