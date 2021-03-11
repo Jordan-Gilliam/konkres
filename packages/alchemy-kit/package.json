@@ -27,7 +27,7 @@
     "@babel/code-frame": "^7.10.3",
     "chalk": "4.1.0",
     "jest-message-util": "^26.1.0",
-    "react-dev-utils": "^10.2.1",
+    "react-dev-utils": "^11.0.4",
     "strip-ansi": "6.0.0"
   }
 }
