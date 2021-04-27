@@ -1299,7 +1299,7 @@
     webpack "5.0.0-beta.18"
     webpack-dev-server "~3.11.0"
     webpack-manifest-plugin "3.0.0-rc.0"
-    webpack-node-externals "^2.5.0"
+    webpack-node-externals "^3.0.0"
     webpackbar "^4.0.0"
 
 "@konkres/quark@file:packages/quark":
@@ -13445,10 +13445,10 @@ webpack-manifest-plugin@3.0.0-rc.0:
     lodash "^4"
     tapable "^1.1.3"
 
-webpack-node-externals@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-2.5.0.tgz#8d50f3289c71bc2b921a8da228e0b652acc503f1"
-  integrity sha512-g7/Z7Q/gsP8GkJkKZuJggn6RSb5PvxW1YD5vvmRZIxaSxAzkqjfL5n9CslVmNYlSqBVCyiqFgOqVS2IOObCSRg==
+webpack-node-externals@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-3.0.0.tgz#1a3407c158d547a9feb4229a9e3385b7b60c9917"
+  integrity sha512-LnL6Z3GGDPht/AigwRh2dvL9PQPFQ8skEpVrWZXLWBYmqcaojHNN0onvHzie6rq7EWKrrBfPYqNEzTJgiwEQDQ==
 
 webpack-sources@2.0.0-beta.8:
   version "2.0.0-beta.8"
