@@ -33,7 +33,7 @@
     "@konkres/alchemy-kit": "^0.0.3-canary.1",
     "assets-webpack-plugin": "^5.0.2",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.1.0",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.1.0",
     "chalk": "^4.1.0",
     "css-loader": "3.6.0",
