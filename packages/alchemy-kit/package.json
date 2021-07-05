@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/code-frame": "^7.10.3",
     "chalk": "4.1.0",
-    "jest-message-util": "^26.1.0",
+    "jest-message-util": "^27.0.6",
     "react-dev-utils": "^10.2.1",
     "strip-ansi": "6.0.0"
   }
